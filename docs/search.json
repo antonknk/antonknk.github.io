@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
+    "section": "",
+    "text": "I am a Mres/PhD student at the Department of Government at the London School of Economics and Political Science. My research focuses on ways study remedies to political alienation and ways in which intermediaries like political parties and candidates can foster feelings of political efficacy. More broadly, I want to understand how interest aggregation and feelings of powerlessness are related and how they can be decoupled. I hold a BA in Political Science from FU Berlin, an MA in Social Science from HU Berlin and have just finished an MSc in Political Science (Political Behaviour) here at the LSE. I speak German, English, and some Spanish. Outside of my research, I enjoy cooking, running, hiking, and listening to radio plays."
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Home",
+    "section": "Education",
+    "text": "Education\n\nLondon School of Economics and Political Science | MSc Political Science (Political Behaviour) | Sept. 2023 - Sept. 2024\nHumboldt University Berlin | M.A. Social Science | Oct. 2021 - Sept. 2023\nFreie University Berlin | B.A. Political Science | Oct. 2018 - Sept. 2023"
+  },
+  {
+    "objectID": "index.html#publications",
+    "href": "index.html#publications",
+    "title": "Home",
+    "section": "Publications",
+    "text": "Publications"
+  }
+]
