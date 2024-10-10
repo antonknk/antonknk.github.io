@@ -1,11 +1,39 @@
 ---
-title: "Anton Könneke"
+title: "Home"
+about:
+  template: solana
+  image: media/profile.PNG
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://x.com/AntonKonneke
+    - icon: github
+      text: Github
+      href: https://github.com/antonknk
+    - text: Email
+      href: mailto:mail@antonkoenneke.de
+      
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    page-layout: full
 ---
+:::{#hero-heading}
 
-This is a Quarto website.
+I am a Mres/PhD student at the [Department of Government](https://www.lse.ac.uk/government) at the London School of Economics and Political Science. study remedies to political alienation and ways in which intermediaries like political parties and candidates can foster feelings of political efficacy. More broadly, I want to understand how interest aggregation and feelings of powerlessness are related and how they can be decoupled.
+I hold a BA in Political Science from FU Berlin, an MA in Social Science from HU Berlin and have just finished an MSc in Political Science (Political Behaviour) here at the LSE.
+I speak German, English, and some Spanish. Outside of my research, I enjoy cooking, running, hiking, and listening to radio plays.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+:::
 
-```{r}
-1 + 1
-```
+## Education
+
+- **London School of Economics and Political Science** | *MSc Political Science (Political Behaviour)* | Sept. 2023 - Sept. 2024 
+
+- **Humboldt University Berlin** | *M.A. Social Science* | Oct. 2021 - Sept. 2023
+
+- **Freie University Berlin** | *B.A. Political  Science* | Oct. 2018 - Sept. 2023
+
+## Publications
