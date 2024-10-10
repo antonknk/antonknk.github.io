@@ -1,9 +1,6 @@
 ---
 git ---
 title: "antonknk.github.io"
-project:
-  type: website
-  output-dir: docs
 ---
 
 This is a Quarto website.
