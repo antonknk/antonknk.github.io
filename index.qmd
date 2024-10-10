@@ -1,6 +1,5 @@
 ---
-git ---
-title: "antonknk.github.io"
+title: "Anton Könneke"
 ---
 
 This is a Quarto website.
