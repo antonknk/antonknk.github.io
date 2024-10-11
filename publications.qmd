@@ -1,9 +1,10 @@
 ---
 title: "Publications"
 bibliography: mypubs_exp.bib
-nocite: |
-  @*
+bibliographystyle: 'apa'
+nocite: '@*'
 ---
+
 
 ::: {#refs}
 :::

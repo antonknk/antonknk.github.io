@@ -1,14 +1,14 @@
 ---
-title: "About Me"
+title: "Anton Könneke"
 about:
-  template: solana
+  template: trestles
   image: media/profile.PNG
   links:
     - icon: building-fill
       text: LSE
       href: https://www.lse.ac.uk/government/people#Kr
     - icon: mortarboard-fill
-      text: Google Scholar
+      text: Scholar
       href: https://scholar.google.de/citations?user=_mEiVscAAAAJ&hl=de
     - icon: github
       text: Github
@@ -16,15 +16,13 @@ about:
     - icon: envelope-at-fill
       text: Email
       href: mailto:mail@antonkoenneke.de
-    - icon: linkedin
-      text: LinkedIn
-      href: https://www.linkedin.com/in/anton-könneke-6850a2290/
+    # - icon: linkedin
+    #   text: LinkedIn
+    #   href: https://www.linkedin.com/in/anton-könneke-6850a2290/
     - icon: twitter
-      text: twitter
+      text: Twitter
       href: https://x.com/AntonKonneke
       
-
- 
 format:
   html:
     theme: cosmo
@@ -38,7 +36,7 @@ I am a Mres/PhD student at the [Department of Government](https://www.lse.ac.uk/
 
 My PhD thesis focuses on political representation and direct interactions between citizens and representatives. I explore whether face-to-face interactions between citizens and agents of the representative system facilitate mutual learning and increases in perceived system responsiveness. My research draws on field experiments, survey research and causal inference more generally. I enjoy collecting, analysing and visualising all kinds of data including survey, text, and spatial data.
 
-During my undergraduate and graduate studies in Berlin worked as a research assistant to [Thorsten Faas](https://www.polsoz.fu-berlin.de/en/polwiss/forschung/systeme/empsoz/team/Faas.html) at the [Center for Political Sociology of Germany](https://www.polsoz.fu-berlin.de/en/polwiss/forschung/systeme/empsoz/index.html), where I co-authored several publications.
+During my undergraduate and graduate studies in Berlin worked as a research assistant to [Thorsten Faas](https://www.polsoz.fu-berlin.de/en/polwiss/forschung/systeme/empsoz/team/Faas.html) at the [Center for Political Sociology of Germany](https://www.polsoz.fu-berlin.de/en/polwiss/forschung/systeme/empsoz/index.html), where I co-authored several [publications](publications.qmd).
 :::
 
 ## Education
