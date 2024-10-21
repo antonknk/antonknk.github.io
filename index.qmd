@@ -1,5 +1,7 @@
 ---
 title: "Anton Könneke"
+favicon: media/profile.PNG
+description: Doctoral Student in Political Science at the LSE researching representation and mobilisation.
 about:
   template: trestles
   image: media/profile.PNG

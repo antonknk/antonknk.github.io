@@ -1,10 +1,25 @@
 ---
 title: "Publications"
-bibliography: mypubs_exp.bib
-bibliographystyle: 'apa'
-nocite: '@*'
+# bibliography: mypubs_exp.bib
+# bibliographystyle: 'apa'
+# nocite: '@*'
 ---
 
+-   "**Nicht nur anders, sondern auch weniger - Politische Informationsversorgung im Wandel der Generationen,**" with Thorsten Faas (eds. Ursula Münch, Heinrich Oberreuter, and Jörg Siegmund), *Im Land Der Scheinriesen? Die Bundestagswahl 2021 in Der Analyse* (2024), 77–92, Campus. \
+[**\[📖 Chapter\]**](https://www.campus.de/buecher-campus-verlag/wissenschaft/politikwissenschaft/im_land_der_scheinriesen-17464.html?srsltid=AfmBOoqc4JCXW9SWm7CLbJbpFWLXhjY5tq6ex5zqqpMOTqULrsJhKo6O)
 
-::: {#refs}
-:::
+
+-   "**Integrationsfunktion in Zeiten der Fragmentierung**", with Thorsten Faas, *Zeitschrift für Parteienwissenschaften* (2023), (1): 123-34. \
+ [**\[📄 Paper\]**](https://mip.pruf.hhu.de/article/view/559)
+
+-   "**Wählen ab 16? Pro und Contra,**" with Thorsten Faas (eds. Anne-Sophie Friedel, Julia Günther, Jacob Hirsch, Sascha Kneip, Johannes Piepenbrink, and Anne Seibring), *Schriftenreihe / Bundeszentrale für politische Bildung, Band 10871* (2022), Bundeszentrale für politische Bildung.\
+    [**\[📖 Chapter\]**](https://www.bpb.de/shop/buecher/schriftenreihe/516681/repraesentation-identitaet-beteiligung/)
+
+-   **"The Rise and Fall of Polls?,**", with Thorsten Faas, *FES Impuls*, (2021), 1–5.\
+    [**\[📄 Paper\]**](https://library.fes.de/pdf-files/a-p-b/18372.pdf)
+    
+-   "**Wählen ab 16? Pro und Contra,**" with Thorsten Faas, *Aus Politik und Zeitgeschichte* (2022), 38-39: 29–35. \
+[**\[📄 Paper\]**](https://www.bpb.de/system/files/dokument_pdf/APuZ_2021-38-39_online.pdf)
+
+- "**Wählen Mit 16,**", with Thorsten Faas & Arndt Leininger (ed. Hendrik Hering), In *Parlamentarische Demokratie Heute Und Morgen - Erwartungen, Herausforderungen, Ideen*, (2021), Wochenschau Verlag. \
+[**\[📖 Chapter\]**](https://www.wochenschau-verlag.de/Parlamentarische-Demokratie-heute-und-morgen/41273)
