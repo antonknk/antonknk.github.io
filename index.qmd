@@ -1,29 +1,30 @@
 ---
 title: "Anton Könneke"
-favicon: media/profile.PNG
-description: Doctoral Student in Political Science at the LSE researching representation and mobilisation.
+description: Doctoral Student in Political Science researching representation and mobilisation at the London School of Economics and Political Science.
+ 
 about:
   template: trestles
   image: media/profile.PNG
   links:
-    - icon: building-fill
-      text: LSE
+    # - icon: building-fill
+    - text: "<img src='media/lse_mono_notext.jpg' id='footer-center-posit-logo' style='height:20px' about-link-text='LSE'> Department"
       href: https://www.lse.ac.uk/government/people#Kr
     - icon: mortarboard-fill
       text: Scholar
       href: https://scholar.google.de/citations?user=_mEiVscAAAAJ&hl=de
-    - icon: github
-      text: Github
-      href: https://github.com/antonknk
-    - icon: envelope-at-fill
+    - icon: envelope-fill
       text: Email
       href: mailto:mail@antonkoenneke.de
-    # - icon: linkedin
-    #   text: LinkedIn
-    #   href: https://www.linkedin.com/in/anton-könneke-6850a2290/
     - icon: twitter
       text: Twitter
       href: https://x.com/AntonKonneke
+      aria-label: Quarto Twitter
+  # - icon: linkedin
+  #   text: LinkedIn
+  #   href: https://www.linkedin.com/in/anton-könneke-6850a2290/
+  # - icon: github
+  #   text: Github
+  #   href: https://github.com/antonknk
       
 format:
   html:
