@@ -7,7 +7,7 @@ about:
   image: media/profile.PNG
   links:
     # - icon: building-fill
-    - text: "<img src='media/lse_mono_notext.jpg' id='footer-center-posit-logo' style='height:20px' about-link-text='LSE'> Department"
+    - text: "<img src='media/lse_mono_notext.jpg' id='footer-center-posit-logo' style='height:15px; opacity: 0.75;'  about-link-text='LSE'>&nbsp; Website"
       href: https://www.lse.ac.uk/government/people#Kr
     - icon: mortarboard-fill
       text: Scholar

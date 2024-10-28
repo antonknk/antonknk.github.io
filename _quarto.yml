@@ -4,6 +4,7 @@ project:
 
 website:
   title: "Anton Könneke"
+  favicon: media/profile.PNG
   navbar:
     left:
       - href: index.qmd
@@ -15,17 +16,17 @@ website:
        image: media/profile.PNG
   page-footer:
    center: 
-    - text: "<img src='media/lse_mono_notext.jpg' id='footer-center-posit-logo' style='height:20px'>"
+    - text: "<img src='media/lse_mono_notext.jpg' id='footer-center-posit-logo' style='height:20px; opacity: 0.75;'>"
       href: https://www.lse.ac.uk/government/people#Kr
     - text: "<img src='media/scholar_mono.png' id='footer-center-posit-logo' style='height:20px'>"
       href: https://scholar.google.de/citations?user=_mEiVscAAAAJ&hl=de
-    - text: "<img src='media/github.svg' id='footer-center-posit-logo' style='height:20px'>"
+    - text: "<img src='media/github.svg' id='footer-center-posit-logo' style='height:20px; opacity: 0.6;'>"
       href: https://github.com/antonknk
-    - text: "<img src='media/envelope-at-fill.svg' id='footer-center-posit-logo' style='height:20px'>"
+    - text: "<img src='media/envelope-at-fill.svg' id='footer-center-posit-logo' style='height:20px; opacity: 0.6;'>"
       href: mailto:mail@antonkoenneke.de
-    - text: "<img src='media/twitter.svg' id='footer-center-posit-logo' style='height:20px'>"
+    - text: "<img src='media/twitter.svg' id='footer-center-posit-logo' style='height:20px; opacity: 0.6;'>"
       href: https://x.com/AntonKonneke
-    - text: "<img src='media/linkedin.svg' id='footer-center-posit-logo' style='height:20px'>"
+    - text: "<img src='media/linkedin.svg' id='footer-center-posit-logo' style='height:20px; opacity: 0.6;'>"
       href: https://www.linkedin.com/in/anton-könneke-6850a2290/
        
 format:
