@@ -4,7 +4,7 @@ project:
 
 website:
   title: "Anton Könneke"
-  favicon: media/profile.PNG
+  favicon: media/profile_close.PNG
   navbar:
     left:
       - href: index.qmd
