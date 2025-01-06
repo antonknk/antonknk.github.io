@@ -15,10 +15,8 @@ about:
     - icon: envelope-fill
       text: Email
       href: mailto:mail@antonkoenneke.de
-    - icon: twitter
-      text: Twitter
-      href: https://x.com/AntonKonneke
-      aria-label: Quarto Twitter
+    - text: "<img src='media/bluesky.svg' id='footer-center-posit-logo' style='height:20px; opacity: 0.6;' about-link-text='Bluesky'>&nbsp; Bluesky"
+      href: https://bsky.app/profile/antonkoenneke.de
   # - icon: linkedin
   #   text: LinkedIn
   #   href: https://www.linkedin.com/in/anton-könneke-6850a2290/
