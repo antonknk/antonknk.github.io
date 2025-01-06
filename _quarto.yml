@@ -27,8 +27,6 @@ website:
       href: https://github.com/antonknk
     - text: "<img src='media/envelope-at-fill.svg' id='footer-center-posit-logo' style='height:20px; opacity: 0.6;'>"
       href: mailto:mail@antonkoenneke.de
-    - text: "<img src='media/twitter.svg' id='footer-center-posit-logo' style='height:20px; opacity: 0.6;'>"
-      href: https://x.com/AntonKonneke
     - text: "<img src='media/linkedin.svg' id='footer-center-posit-logo' style='height:20px; opacity: 0.6;'>"
       href: https://www.linkedin.com/in/anton-könneke-6850a2290/
     - text: "<img src='media/bluesky.svg' id='footer-center-posit-logo' style='height:20px; opacity: 0.6;'>"
