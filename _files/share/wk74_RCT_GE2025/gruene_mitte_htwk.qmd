@@ -1,0 +1,792 @@
+---
+title: Haustürwahlkampf 2025 
+subtitle: Bündnis 90/Die Grünen Berlin-Mitte
+format: clean-revealjs
+chalkboard: true
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Anton Könneke
+    email: a.konneke@lse.ac.uk
+    url: https://www.antonkoenneke.de
+    orcid: 0009-0005-8444-4198
+date: last-modified
+lang: de
+bibliography: bib.bib
+embed-resource: true
+execute:
+  cache: true
+---
+```{r setup}
+pacman::p_load(dplyr, purrr, haven, ggplot2, lubridate, showtext, optmatch, ggcorrplot, unikn, tidyr, forcats)
+font_add_google("Fira Sans")
+showtext.auto()
+
+rcs_raw = read_dta(grep("ZA7703.*dta$", list.files("data", full.names = T), value = T))
+gles_raw = read_dta(grep("ZA7702.*dta$", list.files("data", full.names = T), value = T))
+  # Party ID: pre078a, Contacted by Party/Media: pre058a:pre059w, Recall 2017: pre061ba, DOB Year: pre062, Media Use:pre035:pre044
+```
+
+```{r recoding}
+rcs = rcs_raw |> 
+  select(timestamp_pre001, pre006ba, pre008ba, 
+         # alter
+         pre062,
+         # bildung
+         pre064,
+         # PI
+         starts_with("pre078"),
+         # polint
+         pre001,
+         # contact media ads
+         starts_with("pre058"),
+         # contact direct
+         starts_with("pre059"),
+         pos004ba)|>
+  mutate(decide = ifelse(pre008ba != -97 | pre006ba > 0, 1, 0),
+         date = as_date(timestamp_pre001)) |> 
+  mutate(across(c(matches("pre058[a-l,x]"), matches("pre059[a-l,x]")),
+                \(x) case_match(x,
+                                -90:99 ~ NA,
+                                .default = x)),
+         media_contact_any = apply(pick(matches("pre058[a-l,x]")), 1, function(x) any(x == 1)), 
+         direct_contact_any = apply(pick(matches("pre059[a-l,x]")), 1, function(x) any(x == 1)),
+         polint = case_match(pre001, 
+                             c(1:5) ~ pre001,
+                             .default = NA),
+         polint_2 = case_match(polint, 
+                               c(1:2) ~ "Sehr stark/stark",
+                               c(3:5) ~ "Mittelmäßig bis sehr schwach",
+                               .default = NA),
+         alter = case_match(pre062, 
+                            c(1900:2003) ~ 2021-pre062,
+                            .default = NA),
+         alter_cat = case_match(alter, 
+                                c(18:29) ~ "18-29",
+                                c(30:44) ~ "30-44",
+                                c(45:59) ~ "45-59",
+                                c(60:120) ~ "ü60",
+                                .default = NA),
+         educ = case_match(pre064,
+                           c(1,2) ~ "Kein- oder Hauptschulabschluss",
+                           c(3,4) ~ "Mittlere Reife oder Fachhochschulreife",
+                           c(5,6,7) ~ "Abitur, noch Schüler:in oder anderer Abs.",
+                           .default = NA),
+         educ = forcats::fct_relevel(educ, 
+                                     "Kein- oder Hauptschulabschluss", 
+                                     after =  3L),
+         PI = case_match(pre078a,
+                         c(1:6,322) ~ pre078a,
+                         .default = NA),
+         any_PI = case_match(pre078a,
+                             c(1:6,322, 801) ~ 1,
+                             808 ~ 0,
+                             .default = NA),
+         pre006ba = case_match(pre006ba, 
+                               c(1:6,322, 801) ~ pre006ba,
+                               .default = NA),
+         pre008ba = case_match(pre008ba, 
+                               c(1:6,322, 801) ~ pre008ba,
+                               .default = NA),
+         vote_pre = coalesce(pre008ba, pre006ba),
+         vote_pos = case_match(pos004ba, 
+                               c(1:6,322, 801) ~ pos004ba,
+                               .default = NA),
+         changed_vote = ifelse(vote_pre != vote_pos, 1, 0)
+  )
+
+gles = gles_raw |> 
+  select(starts_with("q145"), q114ab, bula,
+         starts_with("q128"),
+         starts_with("q129"),
+         starts_with("q130"),
+         starts_with("q131"),
+         starts_with("q132"),
+         starts_with("q133"),
+         starts_with("q134"),
+         starts_with("q135"),
+         starts_with("q136"),
+         starts_with("q137"),
+         starts_with("q138"),
+         starts_with("q139"),
+         q1
+         ) |> 
+  mutate(polint = case_match(q1, 
+                             c(1:5) ~ q1,
+                             .default = NA),
+         vote_pos = case_match(q114ab,
+                               1 ~ "Union",
+                               4 ~ "SPD",
+                               322 ~ "AfD",
+                               5 ~ "FDP",
+                               7 ~ "Die Linke",
+                               6 ~ "Grüne",
+                               8 ~ "Andere",
+                               .default = NA),
+         across(starts_with("q145"), \(x) case_match(x,
+                                                     1:11 ~ x - 1,
+                                                     .default = NA)),
+         ptv_union = q145a,
+         ptv_spd = q145d,
+         ptv_afd = q145h,
+         ptv_fdp = q145e,
+         ptv_linke = q145g,
+         ptv_gruene = q145f) |> 
+  mutate(across(c(starts_with("q128"),
+                starts_with("q129"),
+                starts_with("q130"),
+                starts_with("q131"),
+                starts_with("q132"),
+                starts_with("q133"),
+                starts_with("q134"),
+                starts_with("q135"),
+                starts_with("q136"),
+                starts_with("q137"),
+                starts_with("q138"),
+                starts_with("q139")), \(x) case_match(x, 
+                                                     -90:-99 ~ NA,
+                                              .default = x))) |> 
+  mutate(
+    contact_Veranstaltung = apply(pick(matches("q128[a-f,x]")), 1, function(x) any(x == 1)),
+    contact_SMSEmail = apply(pick(matches("q129[a-f,x]")), 1, function(x) any(x == 1)),
+    contact_Flyer = apply(pick(matches("q131[a-f,x]")), 1, function(x) any(x == 1)),
+    contact_Anzeigen = apply(pick(matches("q133[a-f,x]")), 1, function(x) any(x == 1)),
+    contact_Plakate = apply(pick(matches("q134[a-f,x]")), 1, function(x) any(x == 1)),
+    contact_Stände = apply(pick(matches("q136[a-f,x]")), 1, function(x) any(x == 1)),
+    contact_Fernsehwerbung = apply(pick(matches("q137[a-f,x]")), 1, function(x) any(x == 1)),
+    contact_DirektAngesprochen = apply(pick(matches("q138[a-f,x]")), 1, function(x) any(x == 1)),
+    contact_SocialMedia = apply(pick(matches("q139[a-f,x]")), 1, function(x) any(x == 1))
+    )
+ 
+```
+
+
+```{r plots}
+plots = list()
+
+# RCS PI
+
+rcs = rcs |> 
+  mutate(has_pi = case_match(pre078a, 
+                             c(1:9, 322, 801)  ~ 1,
+                             808 ~ 0, 
+                             .default = NA))
+
+
+# Gles contact tupe
+plots$contacts_all = gles |> 
+  select(starts_with("contact")) |> 
+  summarize(across(everything(), \(x) mean(x, na.rm = T))) |> 
+  pivot_longer(everything(), names_prefix = "contact_") |> 
+  mutate(name = case_match(name, 
+                           "DirektAngesprochen" ~ "Direkt angesprochen",
+                           "SMSEmail" ~ "SMS oder Email",
+                           "SocialMedia" ~ "Social Media",
+                           .default = name),
+         name = fct_reorder(name, value, max)) |>
+  ggplot(aes(value, name))+
+  geom_bar(stat = "identity", fill = "#3333B3")+
+  theme_light(base_size = 16, base_family = "Fira Sans") +
+  theme(legend.position = "bottom",
+        panel.grid = element_blank() )+
+  scale_x_continuous("Anteil gesehen/erfahren/erhalten", labels = scales::label_percent(), limits = c(0, 1.05), expand = c(0,0))+
+  ylab("")
+
+plots$polint_contact = gles |> 
+  select(starts_with("contact"), polint) |> 
+  filter(!is.na(polint)) |> 
+  summarize(across(everything(), \(x) mean(x, na.rm = T)), .by = polint) |> 
+  pivot_longer(!polint, names_prefix = "contact_") |> 
+  ggplot(aes(polint, value))+
+  geom_bar(stat = "identity")+
+  facet_wrap(~name)+
+  scale_x_continuous(labels = c("sehr\nstark", "mittelmäßig", "überhaupt\nnicht"),
+                     breaks = c(1,3,5))
+  
+  
+
+
+
+plots$decision = rcs |> 
+  summarise(decided = mean(decide),
+            n = n(), .by = c(date)) |>
+  ggplot(aes(date, decided)) +
+  scale_x_date(NULL, date_breaks = "1 week", date_labels = "%d. %b") +
+  scale_y_continuous("Anteil der Entschiedenen", labels = scales::label_percent(), limits = c(0.25,1)) +
+  # BTW 2021
+  geom_vline(xintercept = as_date("2021-09-26"), linetype = "dashed") +
+  # 40 Tage vor Wahl
+  geom_vline(xintercept = as_date("2021-08-17"), linetype = "dashed") +
+  geom_point(alpha = 0.5) +
+  geom_smooth(color = "#3333B3", se = F) +
+  theme_light(base_size = 16, base_family = "Fira Sans") +
+  theme(legend.position = "bottom",
+        panel.grid = element_blank())
+
+# Decision plot by polint
+plots$decision_polint = rcs |> 
+  filter(!is.na(polint_2)) |> 
+  summarise(decided = mean(decide),
+            n = n(), .by = c(date, polint_2)) |>
+  ggplot(aes(date, decided, linetype = polint_2, shape = polint_2)) +
+  scale_x_date(NULL, date_breaks = "1 week", date_labels = "%d. %b", 
+               limits = c(dmy("1.8.2021"), dmy("26.09.2021"))) +
+  scale_y_continuous("Anteil der Entschiedenen", labels = scales::label_percent(), limits = c(0.25,1)) +
+  scale_linetype_manual("Politisches Interesse", values = c("solid", "dashed"))+
+  scale_shape_manual("Politisches Interesse", values = c(16,17))+
+  # BTW 2021
+  geom_vline(xintercept = as_date("2021-09-26"), linetype = "dashed") +
+  # 40 Tage vor Wahl
+  geom_vline(xintercept = as_date("2021-08-17"), linetype = "dashed") +
+  geom_point(alpha = 0.5) +
+  geom_smooth(color = "#3333B3", se = F) +
+  theme_light(base_size = 16, base_family = "Fira Sans") +
+  theme(legend.position = "bottom",
+        panel.grid = element_blank())+
+  guides(linetype = guide_legend(nrow = 2,
+                                 ncol =1,
+                                 reverse = T),
+         shape = guide_legend(nrow = 2,
+                              ncol =1,
+                              reverse = T))
+
+# Decision plot by any PI
+plots$decision_any_PI = rcs |> 
+  filter(!is.na(any_PI)) |> 
+  mutate(any_PI  = ifelse(any_PI == 1, "Parteiidentifikation", "Keine Parteiidentifikation")) |> 
+  summarise(decided = mean(decide),
+            n = n(), .by = c(date, any_PI)) |>
+  ggplot(aes(date, decided, linetype = any_PI, shape = any_PI)) +
+  scale_x_date(NULL, date_breaks = "1 week", date_labels = "%d. %b", 
+               limits = c(dmy("1.8.2021"), dmy("26.09.2021"))) +
+  scale_y_continuous("Anteil der Entschiedenen", labels = scales::label_percent(), limits = c(0.25,1)) +
+  scale_linetype_manual("Parteiidentifikation", values = c("solid", "dashed"))+
+  scale_shape_manual("Parteiidentifikation", values = c(16,17))+
+  # BTW 2021
+  geom_vline(xintercept = as_date("2021-09-26"), linetype = "dashed") +
+  # 40 Tage vor Wahl
+  geom_vline(xintercept = as_date("2021-08-17"), linetype = "dashed") +
+  geom_point(alpha = 0.5) +
+  geom_smooth(color = "#3333B3", se = F) +
+  theme_light(base_size = 16, base_family = "Fira Sans") +
+  theme(legend.position = "bottom",
+        panel.grid = element_blank())+
+  guides(linetype = guide_legend(nrow = 2,
+                                 ncol =1,
+                                 reverse = T),
+         shape = guide_legend(nrow = 2,
+                              ncol =1,
+                              reverse = T))
+
+# Contact
+plots$confmat_contact = rcs |> 
+  summarise(n = n(), .by = c(direct_contact_any, media_contact_any)) |> 
+  mutate(Prozent = n/sum(n)) |> 
+  ggplot(aes(direct_contact_any, media_contact_any))+
+  geom_tile(aes(fill = Prozent))+
+  geom_text(aes(label = paste0(100*round(Prozent, 2), "%")))+
+  geom_label(aes(label = paste0(100*round(Prozent, 2), "%")))+
+  scale_fill_gradient(low = "lightblue", high = "#3333B3")+
+  xlab("Parteikontakt - Direkt")+
+  ylab("Parteikontakt - Medien")
+
+# Contact over time - direct
+plots$direct_contact_time = rcs |> 
+  filter(!is.na(direct_contact_any)) |> 
+  summarise(direct_contact_any = mean(direct_contact_any),
+            n = n(), .by = c(date)) |>
+  ggplot(aes(date, direct_contact_any)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(color = "#3333B3", se = F) +
+  scale_x_date(NULL, date_breaks = "1 week", date_labels = "%d. %b", 
+               limits = c(dmy("1.8.2021"), dmy("26.09.2021"))) +
+  scale_y_continuous("Anteil direkt kontaktiert", labels = scales::label_percent(), 
+                     limits = c(0,.20)) +
+  # BTW 2021
+  geom_vline(xintercept = as_date("2021-09-26"), linetype = "dashed") +
+  # 40 Tage vor Wahl
+  geom_vline(xintercept = as_date("2021-08-17"), linetype = "dashed") +
+  theme_light(base_size = 16, base_family = "Fira Sans") +
+  theme(legend.position = "bottom",
+        panel.grid = element_blank())+
+  guides(linetype = guide_legend(nrow = 2,
+                                 ncol =1,
+                                 reverse = T),
+         shape = guide_legend(nrow = 2,
+                              ncol =1,
+                              reverse = T))
+
+# Contact over time - media
+plots$media_contact_time = rcs |> 
+  filter(!is.na(media_contact_any)) |> 
+  summarise(media_contact_any = mean(media_contact_any),
+            n = n(), .by = c(date)) |>
+  ggplot(aes(date, media_contact_any)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(color = "#3333B3", se = F) +
+  scale_x_date(NULL, date_breaks = "1 week", date_labels = "%d. %b", 
+               limits = c(dmy("1.8.2021"), dmy("26.09.2021"))) +
+  scale_y_continuous("Anteil medial kontaktiert", labels = scales::label_percent(), 
+                     limits = c(0,.80)) +
+  # BTW 2021
+  geom_vline(xintercept = as_date("2021-09-26"), linetype = "dashed") +
+  # 40 Tage vor Wahl
+  geom_vline(xintercept = as_date("2021-08-17"), linetype = "dashed") +
+  theme_light(base_size = 16, base_family = "Fira Sans") +
+  theme(legend.position = "bottom",
+        panel.grid = element_blank())+
+  guides(linetype = guide_legend(nrow = 2,
+                                 ncol =1,
+                                 reverse = T),
+         shape = guide_legend(nrow = 2,
+                              ncol =1,
+                              reverse = T))
+
+
+# Decision plot by age
+plots$decision_age = rcs |> 
+  filter(!is.na(alter_cat)) |> 
+  summarise(decided = mean(decide),
+            n = n(), .by = c(date, alter_cat)) |>
+  ggplot(aes(date, decided, color = alter_cat)) +
+  scale_x_date(NULL, date_breaks = "1 week", date_labels = "%d. %b", 
+               limits = c(dmy("1.8.2021"), dmy("26.09.2021"))) +
+  scale_y_continuous("Anteil der Entschiedenen", labels = scales::label_percent(), 
+                     limits = c(.25,1)) +
+  scale_color_brewer("Altersgruppe", type = "qual", palette = 6)+
+  # BTW 2021
+  geom_vline(xintercept = as_date("2021-09-26"), linetype = "dashed") +
+  # 40 Tage vor Wahl
+  geom_vline(xintercept = as_date("2021-08-17"), linetype = "dashed") +
+  geom_point(alpha = 0.5) +
+  geom_smooth(se = F) +
+  theme_light(base_size = 16, base_family = "Fira Sans") +
+  theme(legend.position = "bottom",
+        panel.grid = element_blank())+
+  guides(color = guide_legend(nrow = 2,
+                                 ncol =2))
+
+
+# Decision plot by education
+plots$decision_educ = rcs |> 
+  filter(!is.na(educ)) |> 
+  summarise(decided = mean(decide),
+            n = n(), .by = c(date, educ)) |>
+  ggplot(aes(date, decided, color = educ)) +
+scale_x_date(NULL, date_breaks = "1 week", date_labels = "%d. %b", 
+               limits = c(dmy("1.8.2021"), dmy("26.09.2021"))) +  scale_y_continuous("Anteil der Entschiedenen", labels = scales::label_percent(), 
+                     limits = c(.2,1)) +
+  scale_color_brewer("Bildung", type = "qual", palette = 6)+
+  # BTW 2021
+  geom_vline(xintercept = as_date("2021-09-26"), linetype = "dashed") +
+  # 40 Tage vor Wahl
+  geom_vline(xintercept = as_date("2021-08-17"), linetype = "dashed") +
+  geom_point(alpha = 0.5) +
+  geom_smooth(se = F) +
+  theme_light(base_size = 16, base_family = "Fira Sans") +
+  theme(legend.position = "bottom",
+        panel.grid = element_blank())+
+  guides(color = guide_legend(nrow = 3,
+                                 ncol =1))
+
+# Decision plot by actual Vote Decision
+plots$change_vote = rcs |> 
+  filter(!is.na(changed_vote)) |> 
+  summarise(changed_vote = mean(changed_vote),
+            n = n(), .by = c(date)) |>
+  ggplot(aes(date, changed_vote)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(color = "#3333B3", se = F) +
+  scale_x_date(NULL, date_breaks = "1 week", date_labels = "%d. %b", 
+               limits = c(dmy("1.8.2021"), dmy("26.09.2021"))) +
+  scale_y_continuous("Anteil Wahlentscheidung geändert", labels = scales::label_percent(), 
+                     limits = c(0,.35)) +
+  # BTW 2021
+  geom_vline(xintercept = as_date("2021-09-26"), linetype = "dashed") +
+  # 40 Tage vor Wahl
+  geom_vline(xintercept = as_date("2021-08-17"), linetype = "dashed") +
+  theme_light(base_size = 16, base_family = "Fira Sans") +
+  theme(legend.position = "bottom",
+        panel.grid = element_blank())+
+  guides(linetype = guide_legend(nrow = 2,
+                                 ncol =1,
+                                 reverse = T),
+         shape = guide_legend(nrow = 2,
+                              ncol =1,
+                              reverse = T))
+
+
+# PTV Overlap
+# Für CDU, SPD, Linke, und Grüne jeweils, welche Partei konnte sich noch wie gut vorgestellt werden
+ptv_by_vote = gles |> 
+  filter(!is.na(vote_pos)) |> 
+  summarise(across(starts_with("ptv_"), \(x) mean(x, na.rm =T)), .by = vote_pos)
+
+parties <- newpal(
+  col = c("#000000", "#CC0000", "#FFC000", '#005EA4', '#CC0066', "#0E8C1D"),
+  names = c("cdu", "spd", "fdp", 'afd', 'linke', 'gruene'))
+
+plots$ptvs_greens = ptv_by_vote[ptv_by_vote$vote_pos == "Grüne",] |> 
+  tidyr::pivot_longer(!vote_pos, names_prefix = "ptv_") |> 
+  mutate(Partei = name,
+         Partei = forcats::fct_reorder(Partei, value, mean)) |> 
+  ggplot(aes(Partei, value, fill = Partei))+
+  geom_bar(stat = "identity")+
+  scale_fill_manual("", values = parties,
+                    guide = "none") +
+  theme_light(base_size = 16, base_family = "Fira Sans")+
+  geom_hline(aes(yintercept = 5), linetype = 2, alpha = .5)+
+  scale_y_continuous(limits = c(0,10))+
+  ylab("Propensity to Vote (0-10)")+
+  xlab("")+
+  ggtitle("PTVs der Grünen-Wähler:innen")
+
+plots$ptvs_spd = ptv_by_vote[ptv_by_vote$vote_pos == "SPD",] |> 
+  tidyr::pivot_longer(!vote_pos, names_prefix = "ptv_") |> 
+  mutate(Partei = name,
+         Partei = forcats::fct_reorder(Partei, value, mean)) |> 
+  ggplot(aes(Partei, value, fill = Partei))+
+  geom_bar(stat = "identity")+
+  geom_hline(aes(yintercept = 5), linetype = 2, alpha = .5)+
+  scale_y_continuous(limits = c(0,10))+
+  scale_fill_manual("", values = parties, guide = "none") +
+  theme_light(base_size = 16, base_family = "Fira Sans")+
+  ylab("Propensity to Vote (0-10)")+
+  xlab("")+
+  ggtitle("PTVs der SPD-Wähler:innen")
+
+plots$ptvs_cdu = ptv_by_vote[ptv_by_vote$vote_pos == "Union",] |> 
+  tidyr::pivot_longer(!vote_pos, names_prefix = "ptv_") |> 
+  mutate(Partei = name,
+         Partei = forcats::fct_reorder(Partei, value, mean)) |> 
+  ggplot(aes(Partei, value, fill = Partei))+
+  geom_bar(stat = "identity")+
+  geom_hline(aes(yintercept = 5), linetype = 2, alpha = .5)+
+  scale_y_continuous(limits = c(0,10))+
+  scale_fill_manual("", values = parties, guide = "none") +
+  theme_light(base_size = 16, base_family = "Fira Sans")+
+  ylab("Propensity to Vote (0-10)")+
+  xlab("")+
+  ggtitle("PTVs der Unions-Wähler:innen")
+
+plots$ptvs_linke = ptv_by_vote[ptv_by_vote$vote_pos == "Die Linke",] |> 
+  tidyr::pivot_longer(!vote_pos, names_prefix = "ptv_") |> 
+  mutate(Partei = name,
+         Partei = forcats::fct_reorder(Partei, value, mean)) |> 
+  ggplot(aes(Partei, value, fill = Partei))+
+  geom_bar(stat = "identity")+
+  geom_hline(aes(yintercept = 5), linetype = 2, alpha = .5)+
+  scale_y_continuous(limits = c(0,10))+
+  scale_fill_manual("", values = parties, guide = "none") +
+  theme_light(base_size = 16, base_family = "Fira Sans")+
+  ylab("Propensity to Vote (0-10)")+
+  xlab("")+
+  ggtitle("PTVs der Linke-Wähler:innen")
+
+plots$ptvs_afd = ptv_by_vote[ptv_by_vote$vote_pos == "AfD",] |> 
+  tidyr::pivot_longer(!vote_pos, names_prefix = "ptv_") |> 
+  mutate(Partei = name,
+         Partei = forcats::fct_reorder(Partei, value, mean)) |> 
+  ggplot(aes(Partei, value, fill = Partei))+
+  geom_bar(stat = "identity")+
+  geom_hline(aes(yintercept = 5), linetype = 2, alpha = .5)+
+  scale_y_continuous(limits = c(0,10))+
+  scale_fill_manual("", values = parties, guide = "none") +
+  theme_light(base_size = 16, base_family = "Fira Sans")+
+  ylab("Propensity to Vote (0-10)")+
+  xlab("")+
+  ggtitle("PTVs der AfD-Wähler:innen")
+
+# violin plot
+temp = gles |> 
+  mutate(vote_pos = case_match(vote_pos, 
+                               "AfD" ~ "afd",
+                               "Die Linke" ~ "linke",
+                               "FDP" ~ "fdp",
+                               "Grüne" ~ "gruene",
+                               "SPD" ~ "spd",
+                               "Union" ~ "cdu")) |> 
+  filter(!is.na(ptv_gruene)) |> 
+  filter(!is.na(vote_pos))
+
+temp_subs = temp[sample(1:nrow(temp), size = nrow(temp)*0.1),]
+
+plots$ptv_vote_gruene = temp |> 
+  ggplot(aes(vote_pos, ptv_gruene, color = vote_pos))+
+  scale_color_manual("", values = parties, guide = "none")+
+  geom_point(data = temp_subs,
+             aes(x = vote_pos, 
+                 y = ptv_gruene),
+                 alpha = .3, position = "jitter")+
+  geom_violin(alpha = .5, draw_quantiles = c(.25, .5, .75),
+              bounds = c(0,10))+
+    theme_light(base_size = 16, base_family = "Fira Sans")+
+  xlab("Wahlentscheidung 2021")+
+  ylab("Wahlwahrscheinlichkeiten Grüne")
+
+plots$ptv_vote_spd = temp |> 
+  ggplot(aes(vote_pos, ptv_spd, color = vote_pos))+
+  scale_color_manual("", values = parties, guide = "none")+
+  geom_point(data = temp_subs,
+             aes(x = vote_pos, 
+                 y = ptv_gruene),
+                 alpha = .3, position = "jitter")+
+  geom_violin(alpha = .5, draw_quantiles = c(.25, .5, .75),
+              bounds = c(0,10))+
+    theme_light(base_size = 16, base_family = "Fira Sans")+
+  xlab("Wahlentscheidung 2021")+
+  ylab("Wahlwahrscheinlichkeiten SPD")
+
+# plots$ptv_cor_bund = gles |> 
+#   select(starts_with("ptv")) |> 
+#   rename_with(.fn = ~stringr::str_remove(.x, "ptv_")) |> 
+#   cor(, use = "c") |> 
+#   corrplot::corrplot(order = 'hclust', addrect = 2, mar=c(0,0,5,0), 
+#                      title = "Korrelation - Wahlwahrscheinlichkeiten (Bund)") 
+# plots$ptv_cor_berlin = gles |> 
+#   filter(bula == 11) |> 
+#   select(starts_with("ptv")) |> 
+#   rename_with(.fn = ~stringr::str_remove(.x, "ptv_")) |> 
+#   cor(, use = "c") |> 
+#   corrplot::corrplot(order = 'hclust', addrect = 2, mar=c(0,0,5,0), 
+#                      title = "Korrelation - Wahlwahrscheinlichkeiten (Berlin)")
+```
+
+## Haustürwahlkampf erreicht auch die Unentschlossenen
+
+::::{.columns}
+:::{.column}
+- Viele Menschen sind noch nicht entschieden.
+- Vor allem Menschen ohne starkes politisches Interesse sind noch in hohem Umfang unentschlossen.
+- Diese Menschen erreicht man über konventionelle Kanäle nur schwer.
+- Aber per Haustürwahlkampf!
+
+:::
+:::{.column}
+::: {layout="[[-1], [1], [-1]]"}
+```{r decide_polint, fig.height=4.5, fig.width=7}
+plots$decision_polint 
+```
+:::
+:::
+::::
+
+
+## Haustürwahlkampf
+### Zwei Strategien
+
+::: {layout="[[-1], [1], [-1]]"}
+:::{.incremental}
+1.   Mobilisierung $\Rightarrow$ Wahlbeteiligung der eigenen Unterstützer\*innen.
+2.  Überzeugen $\Rightarrow$ unentschlossene Wähler\*innen gewinnen.
+:::
+:::
+
+## Wir setzen diesmal auf *Überzeugen*
+### ... durch Zuhören
+
+- *Non-judgemental listening* 
+
+- Politischer Mechanismus
+  - Signalisiert Interesse an Perspektive und Erfahrungen der Wähler\*innen.
+  - Voraussetzung für Responsivität.
+
+- Psychologischer Mechanismus
+  - Reduziert defensives Abwehrdenken. 
+  - Eigene Inkonsistenzen werden eher reflektiert.
+  - Die Zuhörer\*in wird als sympathischer und vertrauenswürdiger wahrgenommen.
+
+:::aside
+[ @itzchakovAmAwareMy2017; @kallaReducingExclusionaryAttitudes2020; @kallaWhichNarrativeStrategies2023; @itzchakovListeningUnderstandRole2024]
+:::
+
+## Ein Zuhörgespräch hat vier Teile
+
+::: {layout="[[-1], [1], [-1]]"}
+1. Vorstellen
+2. Gesprächsthema identifizieren
+3. Aufmerksam zuhören (mehr dazu gleich)
+4. Bedanken, Einladung zur Umfrage übergeben, und tschüss.
+
+:::
+
+## Zuhören ist effektiv, wenn ein paar Dinge beachtet werden
+
+1. **Körpersprache**: Nicken, Augenkontakt, Mimik die Gegenüber spiegelt.
+2. **Sprache**: Nachfragen, Paraphrasieren/Zusammenfassen.
+
+Nicht explizit zustimmen oder widersprechen, wir sind zum Zuhören da (Aber eigene Grenzen respektieren).
+
+Im Kern geht es darum, interessiert, aufmerksam und neugierig zu sein! Als Unterstützung und Inspiration gibt es im Listening-Script Tipps für die Körpersprache und Satzfragmente, die dabei helfen, das auch zu offen zeigen.
+
+Mehr dazu hier: [tinyurl.com/wk74script](www.tinyurl.com/wk74script).
+
+
+## Wir messen die Effektivität des HTWK
+
+::: {layout="[[-1], [1], [-1]]"}
+
+- Zufällige Zuteilung der Urnenwahlbezirke in zwei Gruppen.
+- Treatment/Besuch (grün) und Control/Kein Besuch (rot).
+- Am Schluss: Vergleich des Wahlergebnisses in den beiden Gruppen.
+  
+. . .
+
+$\Rightarrow$ Darum wichtig: Nur in Treatment-Gruppe Haustürwahlkampf machen!
+
+:::
+
+## Treatment und Control 
+[https://tinyurl.com/wk74maptool](https://tinyurl.com/wk74maptool)
+
+
+```{=html}
+<iframe width="100%" height="80%" src="https://antonkoenneke.de/_files/share/wk74_RCT_GE2025/maptool.html" title="Treatment & Control"></iframe>
+```
+
+## Wir sammeln Daten mit einem eigenen Tool
+
+::::{.columns}
+
+:::{.column}
+[tinyurl.com/wk74haustuer](www.tinyurl.com/wk74haustuer)
+
+```{r}
+plot(qrcode::qr_code("https://www.tinyurl.com/wk74haustuer"))
+```
+
+*Einmal gemeinsam reingucken*
+:::
+
+:::{.column}
+![](phone.png){width=400}
+:::
+::::
+
+## Ein paar logistische Details
+
+- Flyer einfach in den Briefkasten.
+- Nach Gespräch kurzen Fragebogen in App beantworten.
+- Am Schluss kurzes Feedback von Euch und App beenden.
+
+# Fragen?
+
+# Impro: Ein Zuhörgespräch 
+
+## Jetzt Ihr:
+
+In 2er Paaren:
+
+- Simulation Haustürgespräch
+- Wahlkämpfer\*in führt Zuhörgespräch
+- Wähler\*in erzählt von einer Situation in der sich über Ampel-geärgert wurde.
+
+
+# Fragen
+
+# Routeneinteilung
+
+
+
+# Viel Spaß!
+
+
+# Appendix
+
+
+## Gebäude und Bewohner\*innen nach Gruppe
+
+|Gruppe | Menschen|  Gebäude|
+|:-------------|---------------:|--------:|
+|Treatment     |           91.232| 3.589|
+|Reserve           |           96.563| 4.031|
+|Control           |          185.133| 7.504|
+
+
+## Kontakt und politisches Interesse
+### Unabhängig von Partei
+```{r}
+plots$polint_contact
+```
+
+## Entscheidungszeitpunkt nach Alter
+```{r}
+plots$decision_age
+```
+## Entscheidungszeitpunkt nach Bildung
+```{r}
+plots$decision_educ
+```
+
+## PTVs
+
+### Welche Parteien für Wähler\*innen der Grünen in Frage kommen
+```{r}
+plots$ptvs_greens
+```
+
+
+---
+### Wähler\*innen welcher Parteien sich die Wahl der Grünen vorstellen können...
+
+```{r}
+plots$ptv_vote_gruene
+```
+
+## Wie werden Menschen erreicht?
+
+:::: {.columns}
+:::{.column width="35%"}
+::: {layout="[[-1], [1], [-1]]"}
+- Direkter Kontakt
+    - Stände, Veranstaltungen, Haustürwahlkampf
+- Indirekter Kontakt
+    - Medien, Werbung, Flyer...
+
+:::
+
+:::
+:::{.column width="5%"}
+:::
+:::{.column width="60%"}
+```{r, out.height="80%", fig.heigth=15, fig.width=6}
+plots$contacts_all
+```
+:::
+::::
+
+## Treatment und Control 
+### ... und eine Reserve
+
+```{r}
+tibble(Gruppe = c("Treatment", "Reserve", "Control"),
+       Anteil = c(.25, .25, .50)) |> 
+  ggplot(aes(x = "", Anteil, fill = Gruppe))+
+  geom_bar(stat = "identity", width=1, color="white")+
+  coord_polar("y", start=0)+
+  theme_void()+
+  scale_fill_manual(values = c("darkred", "darkgreen", "green"))
+
+```
+
+
+
+## Treatment und Control
+### Die Gruppen sind sich sehr ähnlich
+```{r}
+readRDS("ext_plots/balance_vote.rds")+
+    theme_bw(base_size = 16, base_family = "Fira Sans")+
+  guides(color = guide_legend(ncol = 1,
+                              position = "right"))
+```
+
+
+
+
+## Literatur
+
+:::{#refs}
+:::
+
+
