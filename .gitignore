@@ -28,6 +28,8 @@
 
 # RStudio files
 .Rproj.user/
+docs/CNAME
+
 
 # produced vignettes
 vignettes/*.html

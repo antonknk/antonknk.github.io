@@ -4,6 +4,7 @@ project:
   resources: 
     - "*.pdf"
     - "*.html"
+    - "CNAME"
 
 website:
   title: "Anton Könneke"
