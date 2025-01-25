@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Routen – Anton Könneke</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./media/profile_close.PNG" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.33/datatables.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<meta name="googlebot" content="noindex">
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Anton Könneke</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./publications.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Routen</h1>
+<p class="subtitle lead">Wahlkreis 74</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Hier findet Ihr Links zu den individuellen Routen. Für die interaktive Karte geht bitte auf <a href="https://tinyurl.com/wk74maptool">tinyurl.com/wk74maptool</a>.</p>
+<div class="column-page">
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-cd7cf510647d0145fe25" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-cd7cf510647d0145fe25">{"x":{"filter":"none","vertical":false,"data":[["1","1","1","1","1","2","2","2","3","3","3","4","5","5","5","6","6","7","7","8","8","9","9","9","9","9","10","10","11","12","12","13","13","13","13","14","14","15","15","15","15","15","15","16","16","16","17","17","18","18","19","19","19","19","20","20","20","20","21","21","22","22","23","23","24","24","25","25","26","26","26","26","27","28","28","28","28","29","29","30","30","30","31","31","32","33","33","33","33","33","33","33","33","33","34","34","34","34","34","34","34","35","35","36","36","37","37","37","38","38","39","40","40","40","41","41","42","42","43","43","44","44","44","44","45","45","45","46","46","47","47","48","49","49","49","50","51","51","52","52"],["Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment"],["Argali","Dogge","Meise","Otter","Tölpel","Fliege","Floh","Kreuzkröte","Antilope","Seevogel","Tintenfisch","Seenadel","Behra","Colobus","Drill","Bison","Chitala","Laubfrosch","Skarabäus","Aland","Apella","Buntbarsch","Carassius","Kodiakbär","Saibing","Weberknecht","Dytiscus","Hornfrosch","Arkal","Barch","Bläßgans","Bandfink","Baribal","Hamster","Lachmöwe","Black-Molly","Siamang","Akumba","Alectis","Axishirsch","Dreiklauer","Pelikan","Weißfisch","Bleßbock","Fuchs","Seeelefant","Neunauge","Seerabe","Bilch","Vikunja","Bilharzia","Buschbaby","Dünnleib","Eber","Borneokatze","Fledermaus","Silberfisch","Zwergadler","Drusenkopf","Seewalze","Andenbär","Zebra","Moorente","Stute","Beerenwnaze","Walross","Geier","Gibbon","Cheetah","Gaur","Marmelente","Töle","Chamäleon","Atun","Bonobo","Marienkäfer","Mücke","Biber","Wal","Brillenbär","dodo","Eidechse","Manta","Muschel","Inger","Buberkäfer","Grottenolm","Hase","Heuschrecke","Made","Rohrdommel","Seescheide","Segelfalter","Strandfloh","Boaedon","Bohrmuschel","Borstenigel","Grevyzebra","Hering","Schnake","Vierfleck","Falter","Megalodon","Henne","Wisent","Kaninchen","Miesmuschel","Nutria","Berg-Coati","Bodenkröte","Akialoa","Bärenmakak","Batakpony","Biene","Bellfrosch","Reptil","Deerhound","Milbe","Buchdrucker","Elritze","Alligator","Frosch","Kammmuschel","Pute","Auster","Bonellia","Kronenadler","Kliesche","Singvogel","Capybara","Shrimp","Bärbling","Admiral","Panther","Rabe","Strömer","Orang-Utan","Skink","Känguru","Möwe"],["<a href=\"_files/share/wk74_RCT_GE2025/routes/1_Treatment_Argali_route.html\">Argali<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/1_Treatment_Dogge_route.html\">Dogge<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/1_Treatment_Meise_route.html\">Meise<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/1_Treatment_Otter_route.html\">Otter<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/1_Treatment_Tölpel_route.html\">Tölpel<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/2_Treatment_Fliege_route.html\">Fliege<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/2_Treatment_Floh_route.html\">Floh<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/2_Treatment_Kreuzkröte_route.html\">Kreuzkröte<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/3_Treatment_Antilope_route.html\">Antilope<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/3_Treatment_Seevogel_route.html\">Seevogel<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/3_Treatment_Tintenfisch_route.html\">Tintenfisch<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/4_Treatment_Seenadel_route.html\">Seenadel<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/5_Treatment_Behra_route.html\">Behra<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/5_Treatment_Colobus_route.html\">Colobus<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/5_Treatment_Drill_route.html\">Drill<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/6_Treatment_Bison_route.html\">Bison<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/6_Treatment_Chitala_route.html\">Chitala<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/7_Treatment_Laubfrosch_route.html\">Laubfrosch<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/7_Treatment_Skarabäus_route.html\">Skarabäus<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/8_Treatment_Aland_route.html\">Aland<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/8_Treatment_Apella_route.html\">Apella<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/9_Treatment_Buntbarsch_route.html\">Buntbarsch<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/9_Treatment_Carassius_route.html\">Carassius<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/9_Treatment_Kodiakbär_route.html\">Kodiakbär<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/9_Treatment_Saibing_route.html\">Saibing<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/9_Treatment_Weberknecht_route.html\">Weberknecht<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/10_Treatment_Dytiscus_route.html\">Dytiscus<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/10_Treatment_Hornfrosch_route.html\">Hornfrosch<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/11_Treatment_Arkal_route.html\">Arkal<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/12_Treatment_Barch_route.html\">Barch<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/12_Treatment_Bläßgans_route.html\">Bläßgans<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/13_Treatment_Bandfink_route.html\">Bandfink<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/13_Treatment_Baribal_route.html\">Baribal<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/13_Treatment_Hamster_route.html\">Hamster<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/13_Treatment_Lachmöwe_route.html\">Lachmöwe<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/14_Treatment_Black-Molly_route.html\">Black-Molly<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/14_Treatment_Siamang_route.html\">Siamang<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/15_Treatment_Akumba_route.html\">Akumba<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/15_Treatment_Alectis_route.html\">Alectis<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/15_Treatment_Axishirsch_route.html\">Axishirsch<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/15_Treatment_Dreiklauer_route.html\">Dreiklauer<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/15_Treatment_Pelikan_route.html\">Pelikan<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/15_Treatment_Weißfisch_route.html\">Weißfisch<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/16_Treatment_Bleßbock_route.html\">Bleßbock<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/16_Treatment_Fuchs_route.html\">Fuchs<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/16_Treatment_Seeelefant_route.html\">Seeelefant<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/17_Treatment_Neunauge_route.html\">Neunauge<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/17_Treatment_Seerabe_route.html\">Seerabe<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/18_Treatment_Bilch_route.html\">Bilch<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/18_Treatment_Vikunja_route.html\">Vikunja<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/19_Treatment_Bilharzia_route.html\">Bilharzia<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/19_Treatment_Buschbaby_route.html\">Buschbaby<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/19_Treatment_Dünnleib_route.html\">Dünnleib<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/19_Treatment_Eber_route.html\">Eber<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/20_Treatment_Borneokatze_route.html\">Borneokatze<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/20_Treatment_Fledermaus_route.html\">Fledermaus<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/20_Treatment_Silberfisch_route.html\">Silberfisch<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/20_Treatment_Zwergadler_route.html\">Zwergadler<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/21_Treatment_Drusenkopf_route.html\">Drusenkopf<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/21_Treatment_Seewalze_route.html\">Seewalze<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/22_Treatment_Andenbär_route.html\">Andenbär<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/22_Treatment_Zebra_route.html\">Zebra<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/23_Treatment_Moorente_route.html\">Moorente<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/23_Treatment_Stute_route.html\">Stute<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/24_Treatment_Beerenwnaze_route.html\">Beerenwnaze<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/24_Treatment_Walross_route.html\">Walross<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/25_Treatment_Geier_route.html\">Geier<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/25_Treatment_Gibbon_route.html\">Gibbon<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/26_Treatment_Cheetah_route.html\">Cheetah<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/26_Treatment_Gaur_route.html\">Gaur<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/26_Treatment_Marmelente_route.html\">Marmelente<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/26_Treatment_Töle_route.html\">Töle<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/27_Treatment_Chamäleon_route.html\">Chamäleon<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/28_Treatment_Atun_route.html\">Atun<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/28_Treatment_Bonobo_route.html\">Bonobo<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/28_Treatment_Marienkäfer_route.html\">Marienkäfer<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/28_Treatment_Mücke_route.html\">Mücke<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/29_Treatment_Biber_route.html\">Biber<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/29_Treatment_Wal_route.html\">Wal<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/30_Treatment_Brillenbär_route.html\">Brillenbär<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/30_Treatment_dodo_route.html\">dodo<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/30_Treatment_Eidechse_route.html\">Eidechse<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/31_Treatment_Manta_route.html\">Manta<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/31_Treatment_Muschel_route.html\">Muschel<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/32_Treatment_Inger_route.html\">Inger<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/33_Treatment_Buberkäfer_route.html\">Buberkäfer<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/33_Treatment_Grottenolm_route.html\">Grottenolm<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/33_Treatment_Hase_route.html\">Hase<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/33_Treatment_Heuschrecke_route.html\">Heuschrecke<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/33_Treatment_Made_route.html\">Made<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/33_Treatment_Rohrdommel_route.html\">Rohrdommel<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/33_Treatment_Seescheide_route.html\">Seescheide<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/33_Treatment_Segelfalter_route.html\">Segelfalter<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/33_Treatment_Strandfloh_route.html\">Strandfloh<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/34_Treatment_Boaedon_route.html\">Boaedon<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/34_Treatment_Bohrmuschel_route.html\">Bohrmuschel<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/34_Treatment_Borstenigel_route.html\">Borstenigel<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/34_Treatment_Grevyzebra_route.html\">Grevyzebra<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/34_Treatment_Hering_route.html\">Hering<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/34_Treatment_Schnake_route.html\">Schnake<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/34_Treatment_Vierfleck_route.html\">Vierfleck<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/35_Treatment_Falter_route.html\">Falter<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/35_Treatment_Megalodon_route.html\">Megalodon<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/36_Treatment_Henne_route.html\">Henne<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/36_Treatment_Wisent_route.html\">Wisent<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/37_Treatment_Kaninchen_route.html\">Kaninchen<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/37_Treatment_Miesmuschel_route.html\">Miesmuschel<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/37_Treatment_Nutria_route.html\">Nutria<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/38_Treatment_Berg-Coati_route.html\">Berg-Coati<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/38_Treatment_Bodenkröte_route.html\">Bodenkröte<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/39_Treatment_Akialoa_route.html\">Akialoa<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/40_Treatment_Bärenmakak_route.html\">Bärenmakak<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/40_Treatment_Batakpony_route.html\">Batakpony<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/40_Treatment_Biene_route.html\">Biene<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/41_Treatment_Bellfrosch_route.html\">Bellfrosch<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/41_Treatment_Reptil_route.html\">Reptil<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/42_Treatment_Deerhound_route.html\">Deerhound<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/42_Treatment_Milbe_route.html\">Milbe<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/43_Treatment_Buchdrucker_route.html\">Buchdrucker<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/43_Treatment_Elritze_route.html\">Elritze<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/44_Treatment_Alligator_route.html\">Alligator<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/44_Treatment_Frosch_route.html\">Frosch<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/44_Treatment_Kammmuschel_route.html\">Kammmuschel<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/44_Treatment_Pute_route.html\">Pute<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/45_Treatment_Auster_route.html\">Auster<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/45_Treatment_Bonellia_route.html\">Bonellia<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/45_Treatment_Kronenadler_route.html\">Kronenadler<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/46_Treatment_Kliesche_route.html\">Kliesche<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/46_Treatment_Singvogel_route.html\">Singvogel<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/47_Treatment_Capybara_route.html\">Capybara<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/47_Treatment_Shrimp_route.html\">Shrimp<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/48_Treatment_Bärbling_route.html\">Bärbling<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/49_Treatment_Admiral_route.html\">Admiral<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/49_Treatment_Panther_route.html\">Panther<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/49_Treatment_Rabe_route.html\">Rabe<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/50_Treatment_Strömer_route.html\">Strömer<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/51_Treatment_Orang-Utan_route.html\">Orang-Utan<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/51_Treatment_Skink_route.html\">Skink<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/52_Treatment_Känguru_route.html\">Känguru<\/a>","<a href=\"_files/share/wk74_RCT_GE2025/routes/52_Treatment_Möwe_route.html\">Möwe<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Level<\/th>\n      <th>Gruppe<\/th>\n      <th>Kennung<\/th>\n      <th>Kennung und Route<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"name":"Level","targets":0},{"name":"Gruppe","targets":1},{"name":"Kennung","targets":2},{"name":"Kennung und Route","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.lse.ac.uk/government/people#Kr">
+<p><img src="media/lse_mono_notext.jpg" id="footer-center-posit-logo" style="height:20px; opacity: 0.75;"></p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.de/citations?user=_mEiVscAAAAJ&amp;hl=de">
+<p><img src="media/scholar_mono.png" id="footer-center-posit-logo" style="height:20px"></p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://github.com/antonknk">
+<p><img src="media/github.svg" id="footer-center-posit-logo" style="height:20px; opacity: 0.6;"></p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="mailto:mail@antonkoenneke.de">
+<p><img src="media/envelope-at-fill.svg" id="footer-center-posit-logo" style="height:20px; opacity: 0.6;"></p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/anton-könneke-6850a2290/">
+<p><img src="media/linkedin.svg" id="footer-center-posit-logo" style="height:20px; opacity: 0.6;"></p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/antonkoenneke.de">
+<p><img src="media/bluesky.svg" id="footer-center-posit-logo" style="height:20px; opacity: 0.6;"></p>
+</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

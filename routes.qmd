@@ -1,0 +1,42 @@
+---
+title: "Routen"
+subtitle: "Wahlkreis 74"
+# bibliography: mypubs_exp.bib
+# bibliographystyle: 'apa'
+# nocite: '@*'
+include-in-header:
+    - text: |
+        <meta name="googlebot" content="noindex">
+---
+
+Hier findet Ihr Links zu den individuellen Routen. Für die interaktive Karte geht bitte auf [tinyurl.com/wk74maptool](https://tinyurl.com/wk74maptool).
+
+:::{.column-page}
+```{r, echo=F, message=F, warning=F}
+library(tidyverse)
+html_path = "_files/share/wk74_RCT_GE2025/routes"
+html_files <- list.files(html_path, pattern = "\\.html$", full.names = FALSE)
+
+
+overview = tibble(full = list.files(html_path, pattern = "\\.html$", full.names = FALSE)) |> 
+  separate_wider_delim(full, "_", 
+                       names = c("Level", "Gruppe", "Kennung"),
+                       too_many = "drop") 
+
+
+# Generate links for each file
+links <- paste0('<a href="', html_path, "/", html_files,'">', overview$Kennung, "</a>")
+overview$`Kennung und Route` = links
+overview = overview |> 
+  arrange(as.numeric(Level))
+
+
+overview |> 
+  remove_rownames() |> 
+  DT::datatable(escape = F, rownames = F)
+
+
+```
+
+
+:::
