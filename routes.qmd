@@ -9,7 +9,7 @@ include-in-header:
         <meta name="googlebot" content="noindex">
 ---
 
-Hier findet Ihr Links zu den individuellen Routen. Für die interaktive Karte geht bitte auf [tinyurl.com/wk74maptool](https://tinyurl.com/wk74maptool).
+Hier findet Ihr Links zu den individuellen Routen. Bitte prüft vor dem Start der Route, an welchen Haustüren wir bereits unterwegs waren. Nutzt dafür die interaktive Karte ([tinyurl.com/wk74maptool](https://tinyurl.com/wk74maptool)) und zoomt ganz an das jeweilige Gebiet heran. Adressen mit roten Punkt wurden bereits besucht.
 
 :::{.column-page}
 ```{r, echo=F, message=F, warning=F}
@@ -27,6 +27,7 @@ overview = tibble(full = list.files(html_path, pattern = "\\.html$", full.names 
 # Generate links for each file
 links <- paste0('<a href="', html_path, "/", html_files,'">', overview$Kennung, "</a>")
 overview$`Kennung und Route` = links
+overview$Kennung = NULL
 overview = overview |> 
   arrange(as.numeric(Level))
 
