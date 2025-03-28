@@ -7,16 +7,16 @@ about:
   image: media/profile.PNG
   links:
     # - icon: building-fill
-    - text: "<img src='media/lse_mono_notext.jpg' id='footer-center-posit-logo' style='height:15px; opacity: 0.75;'  about-link-text='LSE'>&nbsp; Website"
-      href: https://www.lse.ac.uk/government/people#Kr
-    - icon: mortarboard-fill
-      text: Scholar
-      href: https://scholar.google.de/citations?user=_mEiVscAAAAJ&hl=de
+    # - text: "<img src='media/lse_mono_notext.jpg' id='footer-center-posit-logo' style='height:15px; opacity: 0.75;'  about-link-text='LSE'>&nbsp; Website"
+    #   href: https://www.lse.ac.uk/government/people#Kr
+    # - icon: mortarboard-fill
+    #   text: Scholar
+    #   href: https://scholar.google.de/citations?user=_mEiVscAAAAJ&hl=de
     - icon: envelope-fill
       text: Email
       href: mailto:mail@antonkoenneke.de
-    - text: "<img src='media/bluesky.svg' id='footer-center-posit-logo' style='height:20px; opacity: 0.6;' about-link-text='Bluesky'>&nbsp; Bluesky"
-      href: https://bsky.app/profile/antonkoenneke.de
+    # - text: "<img src='media/bluesky.svg' id='footer-center-posit-logo' style='height:20px; opacity: 0.6;' about-link-text='Bluesky'>&nbsp; Bluesky"
+    #   href: https://bsky.app/profile/antonkoenneke.de
   # - icon: linkedin
   #   text: LinkedIn
   #   href: https://www.linkedin.com/in/anton-könneke-6850a2290/
@@ -35,7 +35,7 @@ format:
 ::: {#hero-heading}
 I am a Mres/PhD student at the [Department of Government](https://www.lse.ac.uk/government) at the London School of Economics and Political Science. Broadly, I want to understand how interest aggregation and feelings of powerlessness are related and how they can be decoupled. My supervisors are [Florian Foos](https://www.lse.ac.uk/government/people/academic-staff/florian-foos) and [Mathias Poertner](https://www.lse.ac.uk/government/people/academic-staff/mathias-poertner).
 
-My PhD thesis focuses on political representation and direct interactions between citizens and representatives. I explore whether face-to-face interactions between citizens and agents of the representative system facilitate mutual learning and increases in perceived system responsiveness. My research draws on field experiments, survey research and causal inference more generally. I enjoy collecting, analysing and visualising all kinds of data including survey, text, and spatial data.
+My PhD thesis focuses on political representation and direct interactions between citizens and representatives. I investigate how face-to-face interactions between citizens, party members, and politicians contribute to representation. My research draws on field experiments, survey research and causal inference more generally. I enjoy collecting, analysing and visualising all kinds of data including survey, text, and spatial data.
 
 During my undergraduate and graduate studies in Berlin worked as a research assistant to [Thorsten Faas](https://www.polsoz.fu-berlin.de/en/polwiss/forschung/systeme/empsoz/team/Faas.html) at the [Center for Political Sociology of Germany](https://www.polsoz.fu-berlin.de/en/polwiss/forschung/systeme/empsoz/index.html), where I co-authored several [publications](publications.qmd).
 :::
