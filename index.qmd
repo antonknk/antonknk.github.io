@@ -4,7 +4,7 @@ description: Doctoral Student in Political Science researching representation an
  
 about:
   template: trestles
-  image: media/profile.PNG
+  image: media/profil2small.jpeg
   links:
     # - icon: building-fill
     # - text: "<img src='media/lse_mono_notext.jpg' id='footer-center-posit-logo' style='height:15px; opacity: 0.75;'  about-link-text='LSE'>&nbsp; Website"

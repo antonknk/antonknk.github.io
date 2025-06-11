@@ -8,7 +8,7 @@ project:
 
 website:
   title: "Anton Könneke"
-  favicon: media/profile_close.PNG
+  favicon: media/profil2mini.PNG
   navbar:
     left:
       - href: index.qmd
@@ -17,7 +17,7 @@ website:
     open-graph: 
        title: "Anton Könneke"
        description: Doctoral Student in Political Science researching representation and mobilisation at LSE.
-       image: media/profile.PNG
+       image: media/profil2small.jpeg
   page-footer:
    center: 
     - text: "<img src='media/lse_mono_notext.jpg' id='footer-center-posit-logo' style='height:20px; opacity: 0.75;'>"
