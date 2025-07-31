@@ -14,6 +14,7 @@ website:
       - href: index.qmd
         text: Home
       - publications.qmd
+      - teaching.qmd
     open-graph: 
        title: "Anton Könneke"
        description: Doctoral Student in Political Science researching representation and mobilisation at LSE.
