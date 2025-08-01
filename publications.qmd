@@ -5,6 +5,22 @@ title: "Publications"
 # nocite: '@*'
 ---
 
+## Current Projects
+
+:::{.callout-note collapse="true" icon="false"}
+## Non-Judgemental Listening as a Campaign Strategy in Partisan Doorstep Campaigns
+\
+**Abstract**\
+Non-judgmental listening in face-to-face interactions has been shown to create feelings of receptiveness and connectedness and to facilitate attitude change. Building on the idea that political representation could benefit from stronger connections and mutual exchange between citizens and political parties, this paper tests the effectiveness of non-judgmental listening as a campaign strategy in partisan doorstep campaigns. In a field experiment with the German Green Party, conducted during the campaign for the 2025 General Election in Berlin, precincts were randomly assigned to receive campaign visits employing a non-judgmental listening script. No visits were conducted in the control group. Counter to the hypotheses, the treatment has no main effect on electoral results. These null results are precisely estimated within a range of approximately ±1 percentage point. However, treatment effects vary by the party's local *mobilisation potential*, a measure used by the party for targeting. The paper discusses possible explanations such as the unprecedented salience of the election and identifies some challenges in converting single-issue campaign strategies into partisan ones.
+\
+\
+[**\[📝 Pre-Registration\]**]()
+
+:::
+
+
+## Published Works
+
 :::{.callout-note collapse="true" icon="false"}
 ## "**Nicht nur anders, sondern auch weniger - Politische Informationsversorgung im Wandel der Generationen**", with Thorsten Faas (eds. Ursula Münch, Heinrich Oberreuter, and Jörg Siegmund), *Im Land Der Scheinriesen? Die Bundestagswahl 2021 in Der Analyse* (2024), 77–92, Campus.
 \
