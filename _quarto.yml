@@ -8,7 +8,7 @@ project:
 
 website:
   title: "Anton Könneke"
-  favicon: media/profil2mini.PNG
+  favicon: media/favicon.ico
   navbar:
     left:
       - href: index.qmd
