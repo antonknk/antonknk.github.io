@@ -1,1 +1,13 @@
 /* css styles */
+
+/* Make about page image smaller */
+.about-image {
+  max-width: 200px !important;
+  width: 200px !important;
+}
+
+/* Alternative approach targeting the specific about template */
+.about-contents .about-image img {
+  max-width: 200px !important;
+  width: 200px !important;
+}
